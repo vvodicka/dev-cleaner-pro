@@ -154,6 +154,26 @@ hdiutil create \
 
 echo "$DMG ($(du -h "$DMG" | cut -f1))"
 
+# Signing the disk image itself is a nicety, and only possible when a Developer
+# ID private key is in the keychain. Xcode's automatic signing may instead use
+# cloud-managed signing, where the key stays with Apple and codesign has nothing
+# to sign with. The app inside is signed either way, and the notarization ticket
+# staples to the image either way, so an unsigned image costs nothing but the
+# ability to run `spctl` against the image.
+IDENTITIES="$(security find-identity -v -p codesigning || true)"
+DEV_ID="$(awk '/Developer ID Application/ { print $2; exit }' <<<"$IDENTITIES")"
+DMG_SIGNED=0
+if [[ -n "$DEV_ID" ]]; then
+  step "Signing the disk image"
+  codesign --sign "$DEV_ID" --timestamp --force "$DMG"
+  codesign --verify --verbose=2 "$DMG"
+  DMG_SIGNED=1
+else
+  note "no Developer ID private key in the keychain (cloud-managed signing) —"
+  note "the disk image stays unsigned. The app inside is signed and the ticket"
+  note "is stapled to the image, so this changes nothing for whoever installs it."
+fi
+
 # -------------------------------------------------------------- notarization --
 if (( NOTARIZE )); then
   step "Notarizing (this takes a few minutes)"
@@ -165,8 +185,14 @@ if (( NOTARIZE )); then
   xcrun stapler staple "$DMG"
   xcrun stapler validate "$DMG"
 
-  # Gatekeeper's own verdict on what a colleague will actually download.
-  spctl --assess --type open --context context:primary-signature --verbose=2 "$DMG"
+  # Gatekeeper's verdict on the thing that matters: will the app be allowed to
+  # run on someone else's Mac. Assessed against the app rather than the image,
+  # because an unsigned image has no signature to assess.
+  step "Gatekeeper"
+  spctl --assess --type exec --verbose=2 "$APP"
+  if (( DMG_SIGNED )); then
+    spctl --assess --type open --context context:primary-signature --verbose=2 "$DMG"
+  fi
 else
   echo
   note "--skip-notarize: this build will be refused by Gatekeeper on another Mac."
