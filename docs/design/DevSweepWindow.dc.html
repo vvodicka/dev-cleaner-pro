@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/design-system/colors_and_type.css">
+<script src="_ds/design-system/_ds_bundle.js"></script>
+<style>
+@keyframes dsspin { to { transform: rotate(360deg) } }
+</style>
+</helmet>
+<div style="{{ tokens }}" data-screen-label="{{ label }}">
+<div style="width:100%;height:100%;display:flex;flex-direction:column;overflow:hidden;border-radius:10px;background:var(--w-bg);color:var(--w-fg);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',sans-serif;font-size:13px;box-shadow:0 1px 0 var(--w-sep) inset,0 18px 48px rgba(0,0,0,.22);border:1px solid var(--w-frame)">
+
+  <div style="height:52px;flex:none;display:flex;align-items:center;gap:10px;padding:0 12px;background:var(--w-chrome);border-bottom:1px solid var(--w-sep)">
+    <div style="display:flex;gap:8px;align-items:center;margin-right:6px">
+      <div style="width:12px;height:12px;border-radius:50%;background:#FF5F57"></div>
+      <div style="width:12px;height:12px;border-radius:50%;background:#FEBC2E"></div>
+      <div style="width:12px;height:12px;border-radius:50%;background:#28C840"></div>
+    </div>
+    <div style="width:1px;height:22px;background:var(--w-sep)"></div>
+    <div title="Rescan (⌘R)" style="display:flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:6px;background:var(--w-ctrl);border:1px solid var(--w-ctrlb);box-shadow:0 1px 1px rgba(0,0,0,.05)" style-hover="background:var(--w-hover)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 12a8 8 0 1 1-2.6-5.9"></path><path d="M20 4v5h-5"></path></svg>
+      <span>Rescan</span>
+    </div>
+    <div style="display:flex;height:28px;border-radius:6px;background:var(--w-seg);border:1px solid var(--w-ctrlb);overflow:hidden">
+      <div style="display:flex;align-items:center;padding:0 12px;background:{{ segTrashBg }};color:{{ segTrashFg }};font-weight:{{ segTrashW }}">Move to Trash</div>
+      <div style="width:1px;background:var(--w-ctrlb)"></div>
+      <div style="display:flex;align-items:center;padding:0 12px;background:{{ segPermBg }};color:{{ segPermFg }};font-weight:{{ segPermW }}">Delete permanently</div>
+    </div>
+    <div style="flex:1"></div>
+    <div title="Collapse all" style="display:flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:6px;background:var(--w-ctrl);border:1px solid var(--w-ctrlb)" style-hover="background:var(--w-hover)" onClick="{{ onCollapseAll }}">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9l8-5 8 5M4 15l8 5 8-5"></path></svg>
+      <span>Collapse all</span>
+    </div>
+    <div title="Settings" style="display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:var(--w-ctrl);border:1px solid var(--w-ctrlb)" style-hover="background:var(--w-hover)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"></circle><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"></path></svg>
+    </div>
+  </div>
+
+  <div style="flex:1;min-height:0;display:flex">
+
+    <div style="width:240px;flex:none;background:var(--w-panel);border-right:1px solid var(--w-sep);padding:8px 8px 0;overflow:hidden;display:flex;flex-direction:column">
+      <div style="padding:6px 8px 6px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--w-fg3)">Jump to module</div>
+      <div style="display:flex;flex-direction:column;gap:1px">
+        <sc-for list="{{ modules }}" as="m" hint-placeholder-count="11">
+          <div title="{{ m.tip }}" onClick="{{ m.onClick }}" style="display:flex;align-items:center;gap:8px;height:28px;padding:0 8px;border-radius:6px;background:{{ m.bg }};color:{{ m.fg }};opacity:{{ m.opacity }}" style-hover="background:var(--w-hover)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="flex:none;opacity:.85"><path d="{{ m.d1 }}"></path><path d="{{ m.d2 }}"></path></svg>
+            <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ m.name }}</span>
+            <sc-if value="{{ m.spinning }}" hint-placeholder-val="{{ false }}">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" style="animation:dsspin .8s linear infinite;opacity:.6"><path d="M12 3a9 9 0 0 1 9 9"></path></svg>
+            </sc-if>
+            <sc-if value="{{ m.errored }}" hint-placeholder-val="{{ false }}">
+              <span title="Docker daemon not running" style="color:#B26A00;font-size:12px">⚠︎</span>
+            </sc-if>
+            <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-variant-numeric:tabular-nums;color:{{ m.sizeFg }}">{{ m.size }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="flex:1"></div>
+      <div style="padding:10px 8px;font-size:11px;color:var(--w-fg3);border-top:1px solid var(--w-sep)">{{ scanNote }}</div>
+    </div>
+
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;background:var(--w-content)">
+
+      <sc-if value="{{ banner }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:none;display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--w-warn-bg);border-bottom:1px solid var(--w-sep)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B26A00" stroke-width="1.8" style="flex:none"><path d="M12 4l9 16H3z"></path><path d="M12 10v4M12 17h.01"></path></svg>
+          <span style="flex:1">Full Disk Access not granted — some folders can't be measured.</span>
+          <div style="height:24px;display:flex;align-items:center;padding:0 10px;border-radius:5px;background:var(--w-ctrl);border:1px solid var(--w-ctrlb);font-size:12px" style-hover="background:var(--w-hover)">Open System Settings</div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--w-fg2)" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isScanning }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:none;padding:10px 14px;border-bottom:1px solid var(--w-sep);display:flex;align-items:center;gap:12px">
+          <div style="flex:1;min-width:0;display:flex;align-items:center;gap:10px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--w-fg2)" stroke-width="2.6" style="animation:dsspin .8s linear infinite;flex:none"><path d="M12 3a9 9 0 0 1 9 9"></path></svg>
+            <span>Scanning — 2 of 11 modules</span>
+            <span style="color:var(--w-fg2);font-family:ui-monospace,'SF Mono',Menlo,monospace">43.3 GB found so far</span>
+          </div>
+          <div style="height:24px;display:flex;align-items:center;padding:0 12px;border-radius:5px;background:var(--w-ctrl);border:1px solid var(--w-ctrlb);font-size:12px">Stop</div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:40px">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="var(--w-fg3)" stroke-width="1.2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="2.4"></circle><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path></svg>
+          <div style="font-size:17px;font-weight:600">No scan yet</div>
+          <div style="max-width:340px;text-align:center;color:var(--w-fg2);line-height:1.5">DevSweep measures developer caches, build products and simulator data. Nothing is deleted until you select it.</div>
+          <div style="display:flex;align-items:center;gap:8px;height:30px;padding:0 16px;border-radius:6px;background:var(--w-accent);color:#fff;font-weight:590">Scan Now</div>
+          <div style="font-size:11.5px;color:var(--w-fg3)">⌘R · Last scan: never</div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasTree }}" hint-placeholder-val="{{ true }}">
+        <div style="flex:none;display:flex;align-items:center;gap:12px;height:34px;padding:0 14px;border-bottom:1px solid var(--w-sep);font-size:11px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--w-fg3);background:var(--w-header)">
+          <span style="flex:1">Item</span>
+          <span style="width:78px">Risk</span>
+          <span style="width:84px;text-align:right">Size</span>
+        </div>
+        <div style="flex:1;min-height:0;overflow:auto">
+          <sc-for list="{{ rows }}" as="r" hint-placeholder-count="16">
+            <div title="{{ r.tip }}" style="display:flex;align-items:center;gap:10px;height:{{ r.h }}px;padding-right:14px;padding-left:{{ r.pad }}px;border-bottom:1px solid var(--w-rowsep);background:{{ r.bg }}" style-hover="background:var(--w-hover)">
+              <div onClick="{{ r.onToggle }}" style="width:14px;flex:none;display:flex;align-items:center;justify-content:center;color:var(--w-fg2)">
+                <sc-if value="{{ r.hasKids }}" hint-placeholder-val="{{ true }}">
+                  <svg width="9" height="9" viewBox="0 0 10 10" fill="currentColor" style="transform:rotate({{ r.chev }}deg)"><path d="M2 0l6 5-6 5z"></path></svg>
+                </sc-if>
+              </div>
+              <div onClick="{{ r.onCheck }}" style="width:15px;flex:none;display:flex;align-items:center;justify-content:center">
+                <sc-if value="{{ r.isInfo }}" hint-placeholder-val="{{ false }}">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--w-fg3)" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7.5h.01"></path></svg>
+                </sc-if>
+                <sc-if value="{{ r.isBox }}" hint-placeholder-val="{{ true }}">
+                  <div style="width:14px;height:14px;border-radius:3.5px;display:flex;align-items:center;justify-content:center;font-size:10px;line-height:1;color:#fff;background:{{ r.boxBg }};border:1px solid {{ r.boxBorder }};opacity:{{ r.boxOpacity }}">{{ r.mark }}</div>
+                </sc-if>
+              </div>
+              <sc-if value="{{ r.isModule }}" hint-placeholder-val="{{ false }}">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="flex:none;opacity:.8"><path d="{{ r.d1 }}"></path><path d="{{ r.d2 }}"></path></svg>
+              </sc-if>
+              <span style="font-weight:{{ r.weight }};font-size:{{ r.fs }}px;color:{{ r.fg }};white-space:nowrap">{{ r.title }}</span>
+              <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;color:var(--w-fg3)">{{ r.sub }}</span>
+              <span style="width:78px;flex:none">
+                <sc-if value="{{ r.badge }}" hint-placeholder-val="{{ true }}">
+                  <span style="display:inline-block;padding:1.5px 7px;border-radius:9px;font-size:10.5px;font-weight:600;letter-spacing:.02em;background:{{ r.badgeBg }};color:{{ r.badgeFg }};border:1px solid {{ r.badgeBd }}">{{ r.badge }}</span>
+                </sc-if>
+              </span>
+              <span style="width:84px;flex:none;text-align:right;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:{{ r.fs }}px;font-weight:{{ r.weight }};font-variant-numeric:tabular-nums;color:{{ r.fg }}">{{ r.size }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <div style="flex:none;height:44px;display:flex;align-items:center;gap:14px;padding:0 14px;background:var(--w-chrome);border-top:1px solid var(--w-sep)">
+        <span>Selected: <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-weight:590">{{ selSize }}</span> · {{ selCount }} items</span>
+        <span onClick="{{ onClear }}" style="color:var(--w-accent);opacity:{{ actionsOpacity }}" style-hover="text-decoration:underline">Clear</span>
+        <div style="flex:1"></div>
+        <div style="display:flex;align-items:center;height:28px;padding:0 16px;border-radius:6px;font-weight:590;background:{{ deleteBg }};color:#fff;box-shadow:0 1px 2px rgba(0,0,0,.18);opacity:{{ actionsOpacity }}">{{ deleteLabel }}</div>
+        <span style="font-size:11.5px;color:var(--w-fg3)">Freed all-time: 449 GB</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1120,&quot;height&quot;:720},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;mode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;trash&quot;,&quot;permanent&quot;],&quot;default&quot;:&quot;trash&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;state&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;normal&quot;,&quot;scanning&quot;,&quot;empty&quot;],&quot;default&quot;:&quot;normal&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;module&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;xcode&quot;,&quot;sims&quot;,&quot;docker&quot;,&quot;android&quot;,&quot;jb&quot;,&quot;pkg&quot;,&quot;user&quot;,&quot;ai&quot;,&quot;logs&quot;,&quot;custom&quot;],&quot;default&quot;:&quot;xcode&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Initially expanded&quot;},&quot;banner&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;DevSweep&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const G = n => n >= 1 ? n.toFixed(1) + ' GB' : n > 0 ? Math.round(n * 1024) + ' MB' : '0 B';
+
+class Component extends DCLogic {
+  static MODULES = [
+    { id: 'xcode', name: 'Xcode', size: 24.1, d1: 'M4 20l9-9', d2: 'M12 7l4-4 5 5-4 4z', sub: '~/Library/Developer/Xcode' },
+    { id: 'sims', name: 'Simulators', size: 63.9, d1: 'M8 2h8v20H8z', d2: 'M11 19h2', sub: '~/Library/Developer/CoreSimulator' },
+    { id: 'docker', name: 'Docker', size: 44.2, d1: 'M3 10h18v8H3z', d2: 'M7 10V6M11 10V6M15 10V6', sub: '~/Library/Containers/com.docker.docker' },
+    { id: 'android', name: 'Android', size: 23.0, d1: 'M2 6h13v12H2z', d2: 'M18 9h4v9h-4z', sub: '~/Library/Android · ~/.android' },
+    { id: 'jb', name: 'JetBrains', size: 17.3, d1: 'M9 4H5v16h4', d2: 'M15 4h4v16h-4', sub: '~/Library/Caches/JetBrains' },
+    { id: 'pkg', name: 'Package caches', size: 31.6, d1: 'M12 3l9 5v8l-9 5-9-5V8z', d2: 'M3 8l9 5 9-5M12 13v10', sub: 'npm · yarn · pip · gradle · CocoaPods' },
+    { id: 'user', name: 'User caches', size: 14.0, d1: 'M3 6h6l2 2h10v11H3z', d2: '', sub: '~/Library/Caches' },
+    { id: 'ai', name: 'AI tools', size: 8.9, d1: 'M12 4l2.2 5.8L20 12l-5.8 2.2L12 20l-2.2-5.8L4 12l5.8-2.2z', d2: '', sub: 'model & session caches' },
+    { id: 'logs', name: 'Logs', size: 1.8, d1: 'M6 3h9l4 4v14H6z', d2: 'M9 10h7M9 14h7M9 18h4', sub: '~/Library/Logs · DiagnosticReports' },
+    { id: 'backups', name: 'Backups & snapshots', size: 0, d1: 'M3 4h18v4H3z', d2: 'M5 8v12h14V8M10 12h4', sub: 'no iOS backups found' },
+    { id: 'custom', name: 'Custom locations', size: 19.2, d1: 'M12 5v14M5 12h14', d2: '', sub: '3 folders from Settings' }
+  ];
+
+  static TREES = {
+    xcode: [
+      { id: 'dd', t: 'DerivedData', s: 14.8, b: 'Rebuild', sub: '6 projects', k: [
+        { id: 'dd1', t: 'Aurora-fjkdlsahfd', s: 4.2, b: 'Rebuild', sub: 'last used Apr 15 2025', k: [
+          { id: 'dd1a', t: 'Build', s: 3.4, b: 'Rebuild', k: [
+            { id: 'dd1a1', t: 'Intermediates.noindex', s: 2.6, b: 'Rebuild' },
+            { id: 'dd1a2', t: 'Products', s: 0.8, b: 'Rebuild' }
+          ] },
+          { id: 'dd1b', t: 'Index.noindex', s: 0.7, b: 'Rebuild', sub: 'code index — rebuilt on open' },
+          { id: 'dd1c', t: 'Logs', s: 0.1, b: 'Safe' }
+        ] },
+        { id: 'dd2', t: 'PhoenixKit-bqzwlm', s: 3.1, b: 'Rebuild', sub: 'last used Aug 28 2026' },
+        { id: 'dd3', t: 'Cowork-macOS-ahtruq', s: 2.6, b: 'Rebuild', sub: 'last used Sep 02 2026' },
+        { id: 'dd4', t: 'devsweep-dlqmft', s: 2.0, b: 'Rebuild', sub: 'last used Sep 09 2026 · open in Xcode' },
+        { id: 'dd5', t: 'SpecLint-yrmkoc', s: 1.6, b: 'Rebuild', sub: 'last used Jun 11 2026' },
+        { id: 'dd6', t: 'Playground-XR-zzptqa', s: 1.3, b: 'Rebuild', sub: 'last used Jan 07 2026' }
+      ] },
+      { id: 'ar', t: 'Archives', s: 5.1, b: 'Careful', sub: '14 archives · oldest Nov 2023 · contains dSYMs', k: [
+        { id: 'ar1', t: 'Aurora', s: 2.9, b: 'Careful', sub: '7 archives', k: [
+          { id: 'ar1a', t: 'Aurora 2026-08-14 09.12.xcarchive', s: 1.1, b: 'Careful' },
+          { id: 'ar1b', t: 'Aurora 2026-05-02 17.40.xcarchive', s: 1.0, b: 'Careful' },
+          { id: 'ar1c', t: 'Aurora 2025-11-19 11.03.xcarchive', s: 0.8, b: 'Careful' }
+        ] },
+        { id: 'ar2', t: 'Cowork-macOS', s: 1.4, b: 'Careful', sub: '4 archives' },
+        { id: 'ar3', t: 'PhoenixKit', s: 0.8, b: 'Careful', sub: '3 archives' }
+      ] },
+      { id: 'ds', t: 'iOS DeviceSupport', s: 3.4, b: 'Rebuild', sub: 're-created when a device is attached', k: [
+        { id: 'ds1', t: 'iPhone 17 Pro · iOS 26.4 (23A344)', s: 1.2, b: 'Rebuild', sub: 'last used Sep 08 2026' },
+        { id: 'ds2', t: 'iPhone 15 · iOS 25.5 (22F76)', s: 0.9, b: 'Rebuild', sub: 'last used Mar 21 2026' },
+        { id: 'ds3', t: 'iPad Pro · iOS 26.0 (23A101)', s: 0.8, b: 'Rebuild' },
+        { id: 'ds4', t: 'iPhone 12 · iOS 24.7 (21H16)', s: 0.5, b: 'Safe', sub: 'device not seen in 18 months' }
+      ] },
+      { id: 'ca', t: 'Caches', s: 0.8, b: 'Safe', sub: '~/Library/Developer/Xcode/Caches', k: [
+        { id: 'ca1', t: 'Clang module cache', s: 0.42, b: 'Safe' },
+        { id: 'ca2', t: 'SwiftPM cache', s: 0.24, b: 'Rebuild', sub: 're-downloads packages' },
+        { id: 'ca3', t: 'Previews', s: 0.14, b: 'Safe' }
+      ] }
+    ],
+    sims: [
+      { id: 'rt', t: 'Runtimes', s: 21.4, b: 'Rebuild', sub: 'downloadable again from Xcode', k: [
+        { id: 'rt1', t: 'iOS 26.4', s: 7.4, b: 'Rebuild', sub: 'in use by 6 devices' },
+        { id: 'rt2', t: 'iOS 25.5', s: 6.9, b: 'Rebuild', sub: 'in use by 4 devices' },
+        { id: 'rt3', t: 'tvOS 26.0', s: 4.0, b: 'Safe', sub: 'no devices' },
+        { id: 'rt4', t: 'watchOS 12.2', s: 3.1, b: 'Rebuild', sub: 'in use by 2 devices' }
+      ] },
+      { id: 'dv', t: 'Devices', s: 38.2, b: 'Careful', sub: '16 devices', k: [
+        { id: 'dv1', t: 'iOS 26.4', s: 18.6, b: 'Careful', sub: '6 devices', k: [
+          { id: 'dv1a', t: 'iPhone 17 Pro', s: 4.1, b: 'Careful', sub: 'Booted', blocked: 'Simulator is booted — shut it down to delete' },
+          { id: 'dv1b', t: 'iPhone 17', s: 3.4, b: 'Careful', sub: 'last used Sep 09 2026', k: [
+            { id: 'dv1b1', t: 'data/Containers', s: 2.7, b: 'Careful', sub: 'app data & databases' },
+            { id: 'dv1b2', t: 'data/Library/Caches', s: 0.7, b: 'Safe' }
+          ] },
+          { id: 'dv1c', t: 'iPad Pro 13-inch (M4)', s: 3.2, b: 'Careful', sub: 'last used Aug 30 2026' },
+          { id: 'dv1d', t: 'iPhone 16 Pro', s: 2.9, b: 'Careful' },
+          { id: 'dv1e', t: 'Apple Vision Pro', s: 2.6, b: 'Careful', sub: 'last used Feb 04 2026' },
+          { id: 'dv1f', t: 'iPhone SE (3rd gen)', s: 2.4, b: 'Careful' }
+        ] },
+        { id: 'dv2', t: 'iOS 25.5', s: 12.9, b: 'Careful', sub: '4 devices', k: [
+          { id: 'dv2a', t: 'iPhone 15 Pro', s: 3.8, b: 'Careful' },
+          { id: 'dv2b', t: 'iPad Air (M2)', s: 3.4, b: 'Careful' },
+          { id: 'dv2c', t: 'iPhone 14', s: 3.1, b: 'Careful' },
+          { id: 'dv2d', t: 'iPhone 13 mini', s: 2.6, b: 'Careful' }
+        ] },
+        { id: 'dv3', t: 'watchOS 12.2', s: 3.4, b: 'Careful', sub: '2 devices' },
+        { id: 'dv4', t: 'Unavailable', s: 3.3, b: 'Safe', sub: 'runtime not installed — devices cannot boot', k: [
+          { id: 'dv4a', t: 'iPhone 12 · iOS 23.2', s: 1.7, b: 'Safe' },
+          { id: 'dv4b', t: 'iPad (9th gen) · iOS 22.4', s: 1.6, b: 'Safe' }
+        ] }
+      ] },
+      { id: 'or', t: 'Orphaned runtime assets', s: 4.3, b: 'Info', info: true, sub: 'managed by CoreSimulator — delete with simctl', k: [
+        { id: 'or1', t: 'Runtime images without a bundle record', s: 3.1, b: 'Info', info: true },
+        { id: 'or2', t: 'Stale device sets', s: 1.2, b: 'Info', info: true }
+      ] }
+    ],
+    docker: [
+      { id: 'dk1', t: 'Images', s: 28.4, b: 'Rebuild', sub: '12 images · 4 unused', k: [
+        { id: 'dk1a', t: 'postgres:16', s: 6.4, b: 'Rebuild', sub: 'last used Sep 08 2026' },
+        { id: 'dk1b', t: 'node:22-bookworm', s: 5.8, b: 'Rebuild' },
+        { id: 'dk1c', t: '<none> dangling layers', s: 9.1, b: 'Safe', sub: '4 images with no tag' },
+        { id: 'dk1d', t: 'aurora-api:dev', s: 7.1, b: 'Rebuild', sub: 'rebuilt from Dockerfile' }
+      ] },
+      { id: 'dk2', t: 'Build cache', s: 9.6, b: 'Safe', sub: 'docker builder prune' },
+      { id: 'dk3', t: 'Volumes', s: 5.1, b: 'Careful', sub: '8 volumes · database contents', k: [
+        { id: 'dk3a', t: 'aurora_pgdata', s: 3.6, b: 'Careful' },
+        { id: 'dk3b', t: '6 anonymous volumes', s: 1.5, b: 'Careful' }
+      ] },
+      { id: 'dk4', t: 'Stopped containers', s: 1.1, b: 'Safe', sub: '5 containers' }
+    ],
+    android: [
+      { id: 'an1', t: 'SDK system images', s: 12.6, b: 'Rebuild', sub: '5 API levels', k: [
+        { id: 'an1a', t: 'android-36 · google_apis_playstore', s: 4.8, b: 'Rebuild' },
+        { id: 'an1b', t: 'android-34 · google_apis', s: 4.1, b: 'Rebuild' },
+        { id: 'an1c', t: 'android-31 · default', s: 3.7, b: 'Safe', sub: 'no AVD uses this' }
+      ] },
+      { id: 'an2', t: 'AVDs', s: 7.2, b: 'Careful', sub: '4 virtual devices', k: [
+        { id: 'an2a', t: 'Pixel_9_API_36', s: 3.1, b: 'Careful' },
+        { id: 'an2b', t: 'Pixel_Tablet_API_34', s: 2.4, b: 'Careful' },
+        { id: 'an2c', t: 'Nexus_5_API_31', s: 1.7, b: 'Safe', sub: 'not booted in 2 years' }
+      ] },
+      { id: 'an3', t: 'Gradle build caches', s: 2.4, b: 'Rebuild' },
+      { id: 'an4', t: 'NDK', s: 0.8, b: 'Rebuild', sub: '1 version' }
+    ],
+    jb: [
+      { id: 'jb1', t: 'IntelliJ IDEA 2026.2', s: 6.8, b: 'Safe', sub: 'caches · indexes · local history', k: [
+        { id: 'jb1a', t: 'caches', s: 4.9, b: 'Safe' },
+        { id: 'jb1b', t: 'local-history', s: 1.9, b: 'Careful', sub: 'uncommitted local changes' }
+      ] },
+      { id: 'jb2', t: 'Android Studio 2026.1', s: 5.2, b: 'Safe' },
+      { id: 'jb3', t: 'Old versions', s: 3.9, b: 'Safe', sub: '2024.3 · 2025.1 — IDEs no longer installed' },
+      { id: 'jb4', t: 'Logs', s: 1.4, b: 'Safe' }
+    ],
+    pkg: [
+      { id: 'pk1', t: 'npm · _cacache', s: 9.8, b: 'Safe', sub: '~/.npm' },
+      { id: 'pk2', t: 'Gradle · modules-2', s: 7.9, b: 'Rebuild', sub: '~/.gradle/caches' },
+      { id: 'pk3', t: 'Yarn cache', s: 6.1, b: 'Safe' },
+      { id: 'pk4', t: 'pip cache', s: 4.4, b: 'Safe' },
+      { id: 'pk5', t: 'CocoaPods', s: 3.4, b: 'Rebuild', sub: '~/Library/Caches/CocoaPods' }
+    ],
+    user: [
+      { id: 'us1', t: 'Application caches', s: 9.2, b: 'Safe', sub: '~/Library/Caches · 64 apps', k: [
+        { id: 'us1a', t: 'com.apple.dt.Xcode', s: 3.1, b: 'Safe' },
+        { id: 'us1b', t: 'com.google.Chrome', s: 2.8, b: 'Safe' },
+        { id: 'us1c', t: '61 smaller apps', s: 3.3, b: 'Safe' }
+      ] },
+      { id: 'us2', t: 'Saved application state', s: 2.1, b: 'Careful', sub: 'reopened windows & drafts' },
+      { id: 'us3', t: 'QuickLook thumbnails', s: 1.4, b: 'Safe' },
+      { id: 'us4', t: 'Font caches', s: 1.3, b: 'Safe' }
+    ],
+    ai: [
+      { id: 'ai1', t: 'Ollama models', s: 5.3, b: 'Careful', sub: '3 models pulled manually' },
+      { id: 'ai2', t: 'Claude Code cache', s: 1.9, b: 'Safe', sub: 'sessions & transcripts' },
+      { id: 'ai3', t: 'Copilot cache', s: 1.1, b: 'Safe' },
+      { id: 'ai4', t: 'Embedding indexes', s: 0.6, b: 'Rebuild' }
+    ],
+    logs: [
+      { id: 'lg1', t: 'DiagnosticReports', s: 0.9, b: 'Safe', sub: 'crash reports' },
+      { id: 'lg2', t: '~/Library/Logs', s: 0.6, b: 'Safe' },
+      { id: 'lg3', t: 'CoreSimulator logs', s: 0.3, b: 'Safe' }
+    ],
+    backups: [],
+    custom: [
+      { id: 'cu1', t: 'Bazel output', s: 9.4, b: 'Rebuild', sub: '~/.cache/bazel' },
+      { id: 'cu2', t: 'Unity library', s: 6.1, b: 'Careful', sub: '~/Projects/xr-lab/Library' },
+      { id: 'cu3', t: 'Homebrew downloads', s: 3.7, b: 'Safe', sub: '~/Library/Caches/Homebrew/downloads' }
+    ]
+  };
+
+  static BADGES = {
+    light: { Safe: ['#E7F3EA', '#1F6B3E', '#C6E3CF'], Rebuild: ['#FBF0DE', '#8A5200', '#EEDCB8'], Careful: ['#FAE1E3', '#9A000A', '#F0C6C9'], Info: ['#F0F0F0', '#6E6E6E', '#DFDFDF'] },
+    dark: { Safe: ['#1B2F27', '#7CD1A0', '#2C4A3B'], Rebuild: ['#332A18', '#E8B75C', '#4A3C22'], Careful: ['#3A1D20', '#F09199', '#552A2E'], Info: ['#2A3A4A', '#A6B4C2', '#3E5060'] }
+  };
+
+  static THEMES = {
+    light: {
+      '--w-bg': '#FFFFFF', '--w-chrome': '#F6F6F6', '--w-panel': '#F0EFEE', '--w-content': '#FFFFFF',
+      '--w-header': '#FAFAFA', '--w-fg': '#111111', '--w-fg2': 'rgba(0,0,0,.60)', '--w-fg3': 'rgba(0,0,0,.42)',
+      '--w-sep': 'rgba(0,0,0,.12)', '--w-rowsep': 'rgba(0,0,0,.055)', '--w-frame': 'rgba(0,0,0,.18)',
+      '--w-ctrl': '#FFFFFF', '--w-ctrlb': 'rgba(0,0,0,.16)', '--w-seg': '#EDEDED', '--w-hover': 'rgba(0,0,0,.045)',
+      '--w-modulebg': '#F7F7F6', '--w-track': 'rgba(0,0,0,.09)', '--w-accent': '#C1000D', '--w-warn-bg': '#FCF4E4'
+    },
+    dark: {
+      '--w-bg': '#1C2835', '--w-chrome': '#22303E', '--w-panel': '#16202B', '--w-content': '#1C2835',
+      '--w-header': '#1F2C39', '--w-fg': '#F2F5F7', '--w-fg2': 'rgba(242,245,247,.62)', '--w-fg3': 'rgba(242,245,247,.44)',
+      '--w-sep': 'rgba(255,255,255,.13)', '--w-rowsep': 'rgba(255,255,255,.06)', '--w-frame': 'rgba(0,0,0,.6)',
+      '--w-ctrl': '#2A3A4A', '--w-ctrlb': 'rgba(255,255,255,.16)', '--w-seg': '#243342', '--w-hover': 'rgba(255,255,255,.06)',
+      '--w-modulebg': '#1F2C39', '--w-track': 'rgba(255,255,255,.12)', '--w-accent': '#E23A44', '--w-warn-bg': '#33291A'
+    }
+  };
+
+  state = { active: this.props.module || 'xcode', expanded: this.initExpanded(), checks: this.initChecks() };
+
+  roots() {
+    const scanning = (this.props.state || 'normal') === 'scanning';
+    const pending = ['jb', 'pkg', 'user', 'ai', 'logs', 'backups'];
+    return Component.MODULES.map(m => ({
+      id: 'mod:' + m.id, t: m.name, s: m.size, sub: m.sub, module: m.id, d1: m.d1, d2: m.d2,
+      unmeasured: scanning && (pending.includes(m.id) || m.id === 'docker' || m.id === 'sims' || m.id === 'android'),
+      error: scanning && m.id === 'docker',
+      k: Component.TREES[m.id] || []
+    }));
+  }
+
+  initExpanded() {
+    const m = this.props.module || 'xcode';
+    const e = { ['mod:' + m]: 1 };
+    if (m === 'sims') Object.assign(e, { rt: 1, dv: 1, dv1: 1, dv4: 1, or: 1 });
+    if (m === 'xcode') Object.assign(e, { dd: 1, ca: 1 });
+    if (m === 'docker') Object.assign(e, { dk1: 1, dk3: 1 });
+    return e;
+  }
+
+  initChecks() {
+    const c = {};
+    const walk = (n, v) => { c[n.id] = v; (n.k || []).forEach(k => walk(k, v)); };
+    Object.keys(Component.TREES).forEach(m => Component.TREES[m].forEach(n => walk(n, 'off')));
+    Component.MODULES.forEach(m => { c['mod:' + m.id] = 'off'; });
+    ['dd', 'ca'].forEach(id => walk(this.find(id, Component.TREES.xcode), 'on'));
+    c.dd4 = 'off'; c.dd = 'partial'; c['mod:xcode'] = 'partial';
+    walk(this.find('dv4', Component.TREES.sims), 'on');
+    c.dv = 'partial'; c.rt3 = 'on'; c.rt = 'partial'; c['mod:sims'] = 'partial';
+    return c;
+  }
+
+  find(id, list) {
+    for (const n of list) { if (n.id === id) return n; if (n.k) { const f = this.find(id, n.k); if (f) return f; } }
+    return null;
+  }
+
+  toggleCheck(node) {
+    if (node.info || node.blocked || node.unmeasured) return;
+    const c = { ...this.state.checks };
+    const next = c[node.id] === 'on' ? 'off' : 'on';
+    const walk = (n, v) => { if (n.blocked || n.info) return; c[n.id] = v; (n.k || []).forEach(k => walk(k, v)); };
+    walk(node, next);
+    const roll = list => list.forEach(n => {
+      if (n.k && n.k.length) {
+        roll(n.k);
+        const kids = n.k.filter(k => !k.info && !k.blocked).map(k => c[k.id]);
+        if (kids.length) c[n.id] = kids.every(x => x === 'on') ? 'on' : kids.every(x => x === 'off') ? 'off' : 'partial';
+      }
+    });
+    roll(this.roots());
+    this.setState({ checks: c });
+  }
+
+  selection(scope) {
+    const c = this.state.checks;
+    let size = 0, count = 0;
+    if (!scope || !scope.length) return { size, count };
+    const walk = (n, parentOn) => {
+      const on = c[n.id] === 'on';
+      if (on && !parentOn) size += n.s;
+      if (on && (!n.k || !n.k.length)) count++;
+      (n.k || []).forEach(k => walk(k, on));
+    };
+    this.roots().filter(r => scope.includes(r.module)).forEach(r => (r.k || []).forEach(n => walk(n, false)));
+    return { size, count };
+  }
+
+  flatten() {
+    const dark = this.props.theme === 'dark';
+    const th = Component.THEMES[dark ? 'dark' : 'light'];
+    const badges = Component.BADGES[dark ? 'dark' : 'light'];
+    const out = [];
+    const walk = (nodes, depth) => {
+      nodes.forEach(n => {
+        const isModule = depth === 0;
+        const st = this.state.checks[n.id] || 'off';
+        const bd = badges[n.b] || badges.Info;
+        const blocked = !!n.blocked || !!n.unmeasured;
+        out.push({
+          id: n.id, title: n.t, sub: n.error ? 'Docker daemon not running' : n.sub || '',
+          size: n.unmeasured ? '—' : G(n.s), pad: 14 + depth * 19,
+          h: isModule ? 34 : 30, fs: isModule ? 13.5 : 13,
+          isModule, d1: n.d1 || '', d2: n.d2 || '',
+          hasKids: !!(n.k && n.k.length) && !n.unmeasured, chev: this.state.expanded[n.id] ? 90 : 0,
+          onToggle: () => this.setState(s => ({ expanded: { ...s.expanded, [n.id]: !s.expanded[n.id] }, active: n.module || s.active })),
+          onCheck: () => this.toggleCheck(n),
+          isInfo: !!n.info, isBox: !n.info,
+          boxBg: blocked ? th['--w-track'] : st === 'off' ? 'transparent' : th['--w-accent'],
+          boxBorder: st === 'off' || blocked ? th['--w-ctrlb'] : th['--w-accent'],
+          boxOpacity: blocked ? 0.5 : 1,
+          mark: blocked ? '' : st === 'on' ? '✓' : st === 'partial' ? '–' : '',
+          weight: isModule ? 700 : 400,
+          fg: n.info || n.unmeasured ? th['--w-fg3'] : th['--w-fg'],
+          bg: isModule ? th['--w-modulebg'] : 'transparent',
+          badge: isModule ? '' : n.b,
+          badgeBg: bd[0], badgeFg: bd[1], badgeBd: bd[2],
+          tip: n.blocked || (n.info ? 'Info only — cannot be deleted by DevSweep' : n.sub || n.t)
+        });
+        if (n.k && n.k.length && this.state.expanded[n.id]) walk(n.k, depth + 1);
+      });
+    };
+    walk(this.roots(), 0);
+    return out;
+  }
+
+  renderVals() {
+    const dark = this.props.theme === 'dark';
+    const th = Component.THEMES[dark ? 'dark' : 'light'];
+    const tokens = Object.keys(th).map(k => k + ':' + th[k]).join(';') + ';width:100%;height:100%';
+    const st = this.props.state || 'normal';
+    const perm = this.props.mode === 'permanent';
+    const scanning = st === 'scanning';
+    const measured = this.roots().filter(r => !r.unmeasured).map(r => r.module);
+    const sel = this.selection(st === 'empty' ? [] : measured);
+    return {
+      tokens,
+      label: this.props.label || 'DevSweep',
+      banner: this.props.banner !== false && st !== 'empty',
+      isEmpty: st === 'empty',
+      isScanning: scanning,
+      hasTree: st === 'normal' || scanning,
+      scanNote: st === 'empty' ? 'Not scanned' : scanning ? 'Scanning since 12:04' : 'Last scan: today 12:04 · 249 GB measured',
+      segTrashBg: perm ? 'transparent' : th['--w-ctrl'], segTrashFg: th['--w-fg'], segTrashW: perm ? 400 : 590,
+      segPermBg: perm ? th['--w-ctrl'] : 'transparent', segPermFg: perm ? th['--w-accent'] : th['--w-fg'], segPermW: perm ? 590 : 400,
+      deleteLabel: 'Delete…', deleteBg: perm ? th['--w-accent'] : (dark ? '#3E5060' : '#5B6874'),
+      actionsOpacity: sel.count ? 1 : 0.4,
+      selSize: sel.size ? G(sel.size) : '0 B', selCount: sel.count,
+      onClear: () => this.setState({ checks: this.initChecks() }),
+      onCollapseAll: () => this.setState({ expanded: {} }),
+      rows: this.flatten(),
+      modules: Component.MODULES.map(m => {
+        const isActive = m.id === this.state.active && st !== 'empty';
+        const pending = st === 'empty' || (scanning && ['jb', 'pkg', 'user', 'ai', 'logs', 'backups', 'sims', 'android', 'docker'].includes(m.id));
+        const spinning = scanning && ['sims', 'android'].includes(m.id);
+        const errored = m.id === 'docker' && scanning;
+        return {
+          ...m,
+          size: pending ? '—' : errored ? '' : G(m.size),
+          bg: isActive ? th['--w-accent'] : 'transparent',
+          fg: isActive ? '#fff' : th['--w-fg'],
+          sizeFg: isActive ? 'rgba(255,255,255,.8)' : th['--w-fg3'],
+          opacity: pending && !spinning && !errored ? 0.55 : 1,
+          spinning, errored,
+          tip: errored ? 'Docker daemon not running' : 'Expand ' + m.name + ' in the list',
+          onClick: () => this.setState(s => ({ active: m.id, expanded: { ...s.expanded, ['mod:' + m.id]: true } }))
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

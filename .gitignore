@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+*.xcuserdatad/
+xcuserdata/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Design source archive (kept locally, exported into docs/design)
+files/*.zip
+
+# Design-system chrome for the canvas export — not part of the app, not published
+docs/design/_ds/
+
+# Original specification drop, superseded by docs/
+files/

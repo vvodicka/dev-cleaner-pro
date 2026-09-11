@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/design-system/colors_and_type.css">
+<script src="_ds/design-system/_ds_bundle.js"></script>
+<style>
+body { margin: 0; background: #E9E9EA; }
+a { color: #C1000D; text-decoration: none; }
+a:hover { text-decoration: underline; }
+</style>
+</helmet>
+
+<section style="display:flex;flex-direction:column;gap:56px;padding:64px;font-family:Arial,Helvetica,sans-serif;color:#1C2835">
+
+  <div style="display:flex;flex-direction:column;gap:10px;max-width:900px">
+    <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C1000D">DevSweep · macOS 14+ · SwiftUI</div>
+    <div style="font-family:Lato,Arial,sans-serif;font-weight:900;font-size:44px;line-height:1.05;letter-spacing:-.01em">Developer disk cleaner | Main window, sheets, settings, spec</div>
+    <div style="font-size:15px;line-height:1.6;color:#3E5060;max-width:70ch">Ten frames. Windows <a href="#1a">1a</a>–<a href="#1c">1c</a> are live: every module is one expandable parent in a single tree, rows expand, checkboxes roll up tri-state, the footer total recomputes across modules. The left list is navigation — it jumps to a module and expands it. Frames <a href="#1d">1d</a>–<a href="#1h">1h</a> are static states. App chrome uses the macOS system stack (SF Pro / SF Mono); brand red #C1000D stands in for the system accent color.</div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:48px">
+
+    <div id="1a" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 8px;background:#C1000D;color:#fff">1a</span>
+        <span style="font-family:Lato,Arial,sans-serif;font-weight:700;font-size:17px">Main window — Light · Xcode selected</span>
+        <span style="font-size:13px;color:#6E6E6E">Move to Trash mode · FDA banner shown</span>
+      </div>
+      <div style="width:1180px;height:740px">
+        <dc-import name="DevSweepWindow" theme="light" mode="trash" state="normal" module="xcode" label="1a Main / Light / Xcode" hint-size="100%,100%"></dc-import>
+      </div>
+    </div>
+
+    <div id="1b" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 8px;background:#C1000D;color:#fff">1b</span>
+        <span style="font-family:Lato,Arial,sans-serif;font-weight:700;font-size:17px">Main window — Dark · Xcode selected</span>
+        <span style="font-size:13px;color:#6E6E6E">Delete permanently mode · destructive footer button</span>
+      </div>
+      <div style="width:1180px;height:740px">
+        <dc-import name="DevSweepWindow" theme="dark" mode="permanent" state="normal" module="xcode" banner="{{ false }}" label="1b Main / Dark / Xcode" hint-size="100%,100%"></dc-import>
+      </div>
+    </div>
+
+    <div id="1c" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 8px;background:#C1000D;color:#fff">1c</span>
+        <span style="font-family:Lato,Arial,sans-serif;font-weight:700;font-size:17px">Main window — Simulators</span>
+        <span style="font-size:13px;color:#6E6E6E">Runtimes · devices by runtime · Unavailable group · booted device blocked · info-only orphans</span>
+      </div>
+      <div style="width:1180px;height:740px">
+        <dc-import name="DevSweepWindow" theme="light" mode="trash" state="normal" module="sims" banner="{{ false }}" label="1c Main / Simulators" hint-size="100%,100%"></dc-import>
+      </div>
+    </div>
+
+    <div id="1g" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 8px;background:#C1000D;color:#fff">1g</span>
+        <span style="font-family:Lato,Arial,sans-serif;font-weight:700;font-size:17px">Empty — first launch</span>
+      </div>
+      <div style="width:1180px;height:640px">
+        <dc-import name="DevSweepWindow" theme="light" mode="trash" state="empty" module="xcode" label="1g Empty state" hint-size="100%,100%"></dc-import>
+      </div>
+    </div>
+
+    <div id="1h" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 8px;background:#C1000D;color:#fff">1h</span>
+        <span style="font-family:Lato,Arial,sans-serif;font-weight:700;font-size:17px">Scanning — partial results</span>
+        <span style="font-size:13px;color:#6E6E6E">Per-module spinners · Docker error ⚠︎ · Xcode already measured</span>
+      </div>
+      <div style="width:1180px;height:640px">
+        <dc-import name="DevSweepWindow" theme="light" mode="trash" state="scanning" module="xcode" banner="{{ false }}" label="1h Scanning state" hint-size="100%,100%"></dc-import>
+      </div>
+    </div>
+
+    <div id="1d" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 8px;background:#C1000D;color:#fff">1d</span>
+        <span style="font-family:Lato,Arial,sans-serif;font-weight:700;font-size:17px">Delete confirmation sheet — permanent mode</span>
+      </div>
+      <div style="width:660px;padding:40px;background:#C9CBCD;border-radius:10px;display:flex;justify-content:center;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)">
+        <div style="width:560px;background:#F7F7F7;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.28);overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;font-size:13px;color:#111">
+          <div style="padding:22px 24px 16px;display:flex;flex-direction:column;gap:6px;border-bottom:1px solid rgba(0,0,0,.1)">
+            <div style="font-size:15px;font-weight:600">Delete 14 items permanently?</div>
+            <div style="color:rgba(0,0,0,.6)">DevSweep will run the commands below. Nothing goes to the Trash.</div>
+            <div style="margin-top:8px;display:flex;align-items:baseline;gap:8px">
+              <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums">20.9 GB</span>
+              <span style="color:rgba(0,0,0,.6)">will be freed</span>
+            </div>
+          </div>
+          <div style="max-height:340px;overflow:auto;background:#FFFFFF">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 24px;background:#F0EFEE;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(0,0,0,.5)"><span>Xcode</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace">13.6 GB</span></div>
+            <div style="display:flex;gap:12px;padding:7px 24px;border-bottom:1px solid rgba(0,0,0,.05)"><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;color:#333">rm -rf ~/Library/Developer/Xcode/DerivedData/Aurora-fjkdlsahfd</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-variant-numeric:tabular-nums">4.2 GB</span></div>
+            <div style="display:flex;gap:12px;padding:7px 24px;border-bottom:1px solid rgba(0,0,0,.05)"><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;color:#333">rm -rf ~/Library/Developer/Xcode/DerivedData/PhoenixKit-bqzwlm</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-variant-numeric:tabular-nums">3.1 GB</span></div>
+            <div style="display:flex;gap:12px;padding:7px 24px;border-bottom:1px solid rgba(0,0,0,.05)"><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;color:#333">rm -rf ~/Library/Developer/Xcode/DerivedData/Cowork-macOS-ahtruq</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-variant-numeric:tabular-nums">2.6 GB</span></div>
+            <div style="display:flex;gap:12px;padding:7px 24px;border-bottom:1px solid rgba(0,0,0,.05)"><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;color:#333">rm -rf ~/Library/Developer/Xcode/DerivedData/SpecLint-yrmkoc</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-variant-numeric:tabular-nums">1.6 GB</span></div>
+            <div style="display:flex;gap:12px;padding:7px 24px;border-bottom:1px solid rgba(0,0,0,.05)"><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;color:#333">rm -rf ~/Library/Developer/Xcode/DerivedData/Playground-XR-zzptqa</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-variant-numeric:tabular-nums">1.3 GB</span></div>
+            <div style="display:flex;gap:12px;padding:7px 24px;border-bottom:1px solid rgba(0,0,0,.05);color:rgba(0,0,0,.5)"><span style="flex:1">3 more paths in Xcode/Caches</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-variant-numeric:tabular-nums">0.8 GB</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 24px;background:#F0EFEE;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(0,0,0,.5)"><span>Simulators</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace">7.3 GB</span></div>
+            <div style="display:flex;gap:12px;padding:7px 24px;border-bottom:1px solid rgba(0,0,0,.05)"><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;color:#333">xcrun simctl runtime delete tvOS-26-0</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-variant-numeric:tabular-nums">4.0 GB</span></div>
+            <div style="display:flex;gap:12px;padding:7px 24px;border-bottom:1px solid rgba(0,0,0,.05)"><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;color:#333">xcrun simctl delete 8A3F1C02-4E77-4B90-B1D2-6C7A  ·  iPhone 12 · iOS 23.2</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-variant-numeric:tabular-nums">1.7 GB</span></div>
+            <div style="display:flex;gap:12px;padding:7px 24px;border-bottom:1px solid rgba(0,0,0,.05)"><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;color:#333">xcrun simctl delete 5D0B9E44-1AA3-47F1-9C08-2F31  ·  iPad (9th gen) · iOS 22.4</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-variant-numeric:tabular-nums">1.6 GB</span></div>
+          </div>
+          <div style="padding:14px 24px;border-top:1px solid rgba(0,0,0,.1);display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;align-items:center;gap:9px">
+              <div style="width:14px;height:14px;border-radius:3.5px;background:#C1000D;border:1px solid #C1000D;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;line-height:1">✓</div>
+              <span>I understand this can't be undone</span>
+            </div>
+            <div style="display:flex;justify-content:flex-end;gap:10px">
+              <div style="height:28px;display:flex;align-items:center;padding:0 16px;border-radius:6px;background:#fff;border:1px solid rgba(0,0,0,.16)">Cancel</div>
+              <div style="height:28px;display:flex;align-items:center;padding:0 16px;border-radius:6px;background:#C1000D;color:#fff;font-weight:590">Delete Permanently</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="1e" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 8px;background:#C1000D;color:#fff">1e</span>
+        <span style="font-family:Lato,Arial,sans-serif;font-weight:700;font-size:17px">Delete progress sheet — one failure</span>
+      </div>
+      <div style="width:660px;padding:40px;background:#C9CBCD;border-radius:10px;display:flex;flex-direction:column;align-items:center;gap:28px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)">
+        <div style="width:560px;background:#F7F7F7;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.28);overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;font-size:13px;color:#111">
+          <div style="padding:20px 24px 16px;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid rgba(0,0,0,.1)">
+            <div style="display:flex;justify-content:space-between;align-items:baseline">
+              <span style="font-size:15px;font-weight:600">Deleting — 5 of 14</span>
+              <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:12px;color:rgba(0,0,0,.6);font-variant-numeric:tabular-nums">12.0 GB / 20.9 GB</span>
+            </div>
+            <div style="height:5px;border-radius:3px;background:rgba(0,0,0,.1);overflow:hidden"><div style="width:57%;height:100%;background:#C1000D"></div></div>
+          </div>
+          <div style="background:#fff">
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 24px;border-bottom:1px solid rgba(0,0,0,.05)"><span style="color:#1F6B3E;width:12px">✓</span><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px">DerivedData/Aurora-fjkdlsahfd</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-variant-numeric:tabular-nums">4.2 GB</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 24px;border-bottom:1px solid rgba(0,0,0,.05)"><span style="color:#1F6B3E;width:12px">✓</span><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px">DerivedData/PhoenixKit-bqzwlm</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-variant-numeric:tabular-nums">3.1 GB</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 24px;border-bottom:1px solid rgba(0,0,0,.05)"><span style="color:#1F6B3E;width:12px">✓</span><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px">DerivedData/Cowork-macOS-ahtruq</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-variant-numeric:tabular-nums">2.6 GB</span></div>
+            <div style="display:flex;flex-direction:column;gap:3px;padding:8px 24px;border-bottom:1px solid rgba(0,0,0,.05);background:#FDF3F4">
+              <div style="display:flex;align-items:center;gap:10px"><span style="color:#C1000D;width:12px">✗</span><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px">Xcode/Caches/Clang module cache</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-variant-numeric:tabular-nums">0.4 GB</span></div>
+              <div style="padding-left:22px;font-size:11.5px;color:#9A000A">Operation not permitted — grant Full Disk Access to DevSweep and retry.</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 24px;border-bottom:1px solid rgba(0,0,0,.05)"><span style="color:#1F6B3E;width:12px">✓</span><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px">simctl delete 8A3F1C02-4E77…</span><span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;font-variant-numeric:tabular-nums">1.7 GB</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 24px;color:rgba(0,0,0,.45)"><span style="width:12px">·</span><span style="flex:1;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px">9 remaining</span></div>
+          </div>
+          <div style="padding:14px 24px;border-top:1px solid rgba(0,0,0,.1);display:flex;align-items:center;justify-content:space-between">
+            <span style="font-size:12px;color:rgba(0,0,0,.6)">1 item failed</span>
+            <div style="display:flex;gap:10px">
+              <div style="height:28px;display:flex;align-items:center;padding:0 16px;border-radius:6px;background:#fff;border:1px solid rgba(0,0,0,.16)">Stop</div>
+              <div style="height:28px;display:flex;align-items:center;padding:0 16px;border-radius:6px;background:#5B6874;color:#fff;font-weight:590;opacity:.5">Done</div>
+            </div>
+          </div>
+        </div>
+        <div style="width:420px;display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;background:rgba(28,40,53,.92);color:#fff;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;font-size:13px;box-shadow:0 12px 30px rgba(0,0,0,.3)">
+          <span style="flex:1">Moved <span style="font-family:ui-monospace,'SF Mono',Menlo,monospace;font-weight:600">20.5 GB</span> to Trash</span>
+          <div style="height:24px;display:flex;align-items:center;padding:0 10px;border-radius:5px;background:rgba(255,255,255,.14);font-size:12px">Empty Trash</div>
+        </div>
+        <div style="width:420px;font-size:12px;color:#3E5060;text-align:center">Toast after “Done”. In permanent mode the toast reads “Freed 20.5 GB” with no secondary button.</div>
+      </div>
+    </div>
+
+    <div id="1f" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 8px;background:#C1000D;color:#fff">1f</span>
+        <span style="font-family:Lato,Arial,sans-serif;font-weight:700;font-size:17px">Settings › Custom locations</span>
+      </div>
+      <div style="width:760px;height:520px;display:flex;flex-direction:column;border-radius:10px;overflow:hidden;background:#F7F7F7;border:1px solid rgba(0,0,0,.18);box-shadow:0 18px 48px rgba(0,0,0,.22);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;font-size:13px;color:#111">
+        <div style="height:52px;flex:none;display:flex;align-items:center;gap:10px;padding:0 12px;background:#F6F6F6;border-bottom:1px solid rgba(0,0,0,.1)">
+          <div style="display:flex;gap:8px"><div style="width:12px;height:12px;border-radius:50%;background:#FF5F57"></div><div style="width:12px;height:12px;border-radius:50%;background:#FEBC2E"></div><div style="width:12px;height:12px;border-radius:50%;background:#DDD"></div></div>
+          <div style="flex:1;text-align:center;font-weight:590;padding-right:60px">Settings</div>
+        </div>
+        <div style="flex:none;display:flex;justify-content:center;padding:12px 0 14px;background:#F6F6F6;border-bottom:1px solid rgba(0,0,0,.1)">
+          <div style="display:flex;height:28px;border-radius:6px;background:#EDEDED;border:1px solid rgba(0,0,0,.14);overflow:hidden">
+            <div style="display:flex;align-items:center;padding:0 14px">General</div>
+            <div style="width:1px;background:rgba(0,0,0,.14)"></div>
+            <div style="display:flex;align-items:center;padding:0 14px">Modules</div>
+            <div style="width:1px;background:rgba(0,0,0,.14)"></div>
+            <div style="display:flex;align-items:center;padding:0 14px;background:#fff;font-weight:590">Custom locations</div>
+            <div style="width:1px;background:rgba(0,0,0,.14)"></div>
+            <div style="display:flex;align-items:center;padding:0 14px">Advanced</div>
+          </div>
+        </div>
+        <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:12px;padding:18px 20px">
+          <div style="color:rgba(0,0,0,.6)">Folders DevSweep should scan in addition to the built-in modules.</div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;border:1px solid rgba(0,0,0,.14);border-radius:6px;overflow:hidden;background:#fff">
+            <div style="display:flex;gap:12px;padding:6px 12px;background:#F0EFEE;border-bottom:1px solid rgba(0,0,0,.1);font-size:11px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:rgba(0,0,0,.5)"><span style="width:170px">Title</span><span style="flex:1">Path</span><span style="width:90px">Risk</span><span style="width:70px;text-align:right">Size</span></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:7px 12px;border-bottom:1px solid rgba(0,0,0,.05)"><span style="width:170px">Bazel output</span><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;color:#444">~/.cache/bazel</span><span style="width:90px"><span style="display:inline-block;padding:1.5px 7px;border-radius:9px;font-size:10.5px;font-weight:600;background:#FBF0DE;color:#8A5200;border:1px solid #EEDCB8">Rebuild</span></span><span style="width:70px;text-align:right;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:12px;font-variant-numeric:tabular-nums">9.4 GB</span></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:7px 12px;border-bottom:1px solid rgba(0,0,0,.05);background:#FAF0F1"><span style="width:170px">Unity library</span><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;color:#444">~/Projects/xr-lab/Library</span><span style="width:90px"><span style="display:inline-block;padding:1.5px 7px;border-radius:9px;font-size:10.5px;font-weight:600;background:#FAE1E3;color:#9A000A;border:1px solid #F0C6C9">Careful</span></span><span style="width:70px;text-align:right;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:12px;font-variant-numeric:tabular-nums">6.1 GB</span></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:7px 12px;border-bottom:1px solid rgba(0,0,0,.05)"><span style="width:170px">Homebrew downloads</span><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;color:#444">~/Library/Caches/Homebrew/downloads</span><span style="width:90px"><span style="display:inline-block;padding:1.5px 7px;border-radius:9px;font-size:10.5px;font-weight:600;background:#E7F3EA;color:#1F6B3E;border:1px solid #C6E3CF">Safe</span></span><span style="width:70px;text-align:right;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:12px;font-variant-numeric:tabular-nums">3.7 GB</span></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:7px 12px;border-bottom:1px solid rgba(0,0,0,.05)"><span style="width:170px">Old CI artifacts</span><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11.5px;color:#444">/Volumes/Work/ci-artifacts</span><span style="width:90px"><span style="display:inline-block;padding:1.5px 7px;border-radius:9px;font-size:10.5px;font-weight:600;background:#F0F0F0;color:#6E6E6E;border:1px solid #DFDFDF">Info</span></span><span style="width:70px;text-align:right;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:12px;font-variant-numeric:tabular-nums">—</span></div>
+            <div style="flex:1"></div>
+            <div style="display:flex;align-items:center;gap:2px;padding:5px 8px;border-top:1px solid rgba(0,0,0,.1);background:#F6F6F6">
+              <div style="width:22px;height:20px;display:flex;align-items:center;justify-content:center;border-radius:4px" style-hover="background:rgba(0,0,0,.06)">+</div>
+              <div style="width:22px;height:20px;display:flex;align-items:center;justify-content:center;border-radius:4px;color:rgba(0,0,0,.5)" style-hover="background:rgba(0,0,0,.06)">−</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:9px;color:rgba(0,0,0,.6)">
+              <div style="width:14px;height:14px;border-radius:3.5px;background:#C1000D;border:1px solid #C1000D;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;line-height:1">✓</div>
+              <span>Warn before deleting anything marked Careful</span>
+            </div>
+            <div style="height:28px;display:flex;align-items:center;padding:0 14px;border-radius:6px;background:#fff;border:1px solid rgba(0,0,0,.16)">Open config file</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="1i" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 8px;background:#C1000D;color:#fff">1i</span>
+        <span style="font-family:Lato,Arial,sans-serif;font-weight:700;font-size:17px">App icon concept — broom over disk platter</span>
+        <span style="font-size:13px;color:#6E6E6E">Sketch, not a final asset</span>
+      </div>
+      <div style="width:660px;padding:40px;background:#fff;border:1px solid #D8D8D8;border-radius:6px;display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;align-items:flex-end;gap:32px">
+          <div style="width:220px;height:220px;border-radius:50px;background:#1C2835;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.12)">
+            <svg width="220" height="220" viewBox="0 0 220 220">
+              <circle cx="110" cy="110" r="84" fill="none" stroke="#3E5060" stroke-width="7"></circle>
+              <path d="M172 34 L128 94" stroke="#EC5B76" stroke-width="13" stroke-linecap="round"></path>
+              <path d="M102 96 L142 120" stroke="#D24560" stroke-width="20" stroke-linecap="round"></path>
+              <path d="M100 96 L142 120 C136 152 122 176 100 196 L38 148 C50 124 74 106 100 96 Z" fill="#EC5B76"></path>
+              <path d="M90 116 L62 156 M106 126 L86 176 M122 136 L108 186" stroke="#1C2835" stroke-width="4" stroke-linecap="round" opacity=".45"></path>
+              <circle cx="166" cy="146" r="7" fill="none" stroke="#EC5B76" stroke-width="4"></circle><circle cx="186" cy="172" r="5" fill="none" stroke="#EC5B76" stroke-width="4"></circle><circle cx="150" cy="182" r="5" fill="none" stroke="#EC5B76" stroke-width="4"></circle>
+            </svg>
+          </div>
+          <div style="display:flex;align-items:flex-end;gap:16px">
+            <div style="width:96px;height:96px;border-radius:22px;background:#1C2835;display:flex;align-items:center;justify-content:center;overflow:hidden">
+            <svg width="96" height="96" viewBox="0 0 220 220">
+              <circle cx="110" cy="110" r="84" fill="none" stroke="#3E5060" stroke-width="7"></circle>
+              <path d="M172 34 L128 94" stroke="#EC5B76" stroke-width="13" stroke-linecap="round"></path>
+              <path d="M102 96 L142 120" stroke="#D24560" stroke-width="20" stroke-linecap="round"></path>
+              <path d="M100 96 L142 120 C136 152 122 176 100 196 L38 148 C50 124 74 106 100 96 Z" fill="#EC5B76"></path>
+              <path d="M90 116 L62 156 M106 126 L86 176 M122 136 L108 186" stroke="#1C2835" stroke-width="4" stroke-linecap="round" opacity=".45"></path>
+              <circle cx="166" cy="146" r="7" fill="none" stroke="#EC5B76" stroke-width="4"></circle><circle cx="186" cy="172" r="5" fill="none" stroke="#EC5B76" stroke-width="4"></circle><circle cx="150" cy="182" r="5" fill="none" stroke="#EC5B76" stroke-width="4"></circle>
+            </svg>
+          </div>
+            <div style="width:48px;height:48px;border-radius:11px;background:#1C2835;display:flex;align-items:center;justify-content:center;overflow:hidden">
+            <svg width="48" height="48" viewBox="0 0 220 220">
+              <circle cx="110" cy="110" r="84" fill="none" stroke="#3E5060" stroke-width="12"></circle>
+              <path d="M172 34 L128 94" stroke="#EC5B76" stroke-width="16" stroke-linecap="round"></path>
+              <path d="M102 96 L142 120" stroke="#D24560" stroke-width="24" stroke-linecap="round"></path>
+              <path d="M100 96 L142 120 C136 152 122 176 100 196 L38 148 C50 124 74 106 100 96 Z" fill="#EC5B76"></path>
+              
+              
+            </svg>
+          </div>
+            <div style="width:32px;height:32px;border-radius:7px;background:#1C2835;display:flex;align-items:center;justify-content:center;overflow:hidden">
+            <svg width="32" height="32" viewBox="0 0 220 220">
+              <circle cx="110" cy="110" r="84" fill="none" stroke="#3E5060" stroke-width="12"></circle>
+              <path d="M172 34 L128 94" stroke="#EC5B76" stroke-width="16" stroke-linecap="round"></path>
+              <path d="M102 96 L142 120" stroke="#D24560" stroke-width="24" stroke-linecap="round"></path>
+              <path d="M100 96 L142 120 C136 152 122 176 100 196 L38 148 C50 124 74 106 100 96 Z" fill="#EC5B76"></path>
+              
+              
+            </svg>
+          </div>
+            <div style="font-size:12px;color:#6E6E6E;padding-bottom:4px">1024 · 256 · 128 · 64</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:20px;padding-top:20px;border-top:1px solid #D8D8D8">
+          <div style="width:96px;height:96px;flex:none;border-radius:22px;background:#1C2835;display:flex;align-items:center;justify-content:center;overflow:hidden">
+            <img src="assets/smallwater-logo.png" alt="Small Water monogram" style="height:56px;width:auto">
+          </div>
+          <div style="flex:1;font-size:13px;line-height:1.6;color:#3E5060">Broom in Small Water pink #EC5B76 sweeping across a disk platter, on a navy squircle. Bristle lines and dust dots drop below 64 px, the platter ring thickens. The monogram-only tile on the left is the alternative if the icon should carry a wordmark instead of the metaphor.</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="1j" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 8px;background:#C1000D;color:#fff">1j</span>
+        <span style="font-family:Lato,Arial,sans-serif;font-weight:700;font-size:17px">Component spec</span>
+      </div>
+      <div style="width:1180px;background:#fff;border:1px solid #D8D8D8;border-radius:6px;padding:40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;font-size:14px;line-height:1.6;color:#1C2835">
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C1000D">Spacing scale</div>
+          <div style="display:flex;align-items:flex-end;gap:10px">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:4px;height:4px;background:#1C2835"></div><span style="font-size:11px;color:#6E6E6E">4</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:8px;height:8px;background:#1C2835"></div><span style="font-size:11px;color:#6E6E6E">8</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:12px;height:12px;background:#1C2835"></div><span style="font-size:11px;color:#6E6E6E">12</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:16px;height:16px;background:#1C2835"></div><span style="font-size:11px;color:#6E6E6E">16</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:24px;height:24px;background:#1C2835"></div><span style="font-size:11px;color:#6E6E6E">24</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:32px;height:32px;background:#1C2835"></div><span style="font-size:11px;color:#6E6E6E">32</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:48px;height:48px;background:#1C2835"></div><span style="font-size:11px;color:#6E6E6E">48</span></div>
+          </div>
+          <div style="color:#3E5060">Window padding 12–14 · sheet padding 24 · sidebar inset 8 · row inset 14 + 19 per depth level (max depth 4 = 90).</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C1000D">Metrics</div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:4px 16px">
+            <span>Toolbar height</span><span style="font-family:ui-monospace,monospace">52</span>
+            <span>Sidebar width · min</span><span style="font-family:ui-monospace,monospace">240 · 200</span>
+            <span>Jump-list row height</span><span style="font-family:ui-monospace,monospace">28</span>
+            <span>Tree row height</span><span style="font-family:ui-monospace,monospace">30</span>
+            <span>Column header height</span><span style="font-family:ui-monospace,monospace">34</span>
+            <span>Footer height</span><span style="font-family:ui-monospace,monospace">44</span>
+            <span>Module row height</span><span style="font-family:ui-monospace,monospace">34</span>
+            <span>Risk · size column</span><span style="font-family:ui-monospace,monospace">78 · 84</span>
+            <span>Control height · radius</span><span style="font-family:ui-monospace,monospace">28 · 6</span>
+            <span>Window min size</span><span style="font-family:ui-monospace,monospace">900×600</span>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C1000D">Typography</div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:6px 16px;align-items:baseline">
+            <span style="font-family:ui-monospace,monospace;font-size:12px;color:#6E6E6E">.largeTitle 26 semibold mono</span><span style="font-family:ui-monospace,monospace;font-size:20px;font-weight:600">20.9 GB</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px;color:#6E6E6E">.headline 15 semibold</span><span style="font-size:15px;font-weight:600">Delete 14 items permanently?</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px;color:#6E6E6E">.body 13 regular</span><span style="font-size:13px">DerivedData</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px;color:#6E6E6E">.subheadline 12 secondary</span><span style="font-size:12px;color:#6E6E6E">last used Apr 15 2025</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px;color:#6E6E6E">.caption 11 uppercase</span><span style="font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#6E6E6E">Modules</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px;color:#6E6E6E">sizes: monospacedDigit 12</span><span style="font-family:ui-monospace,monospace;font-size:12px;font-variant-numeric:tabular-nums">4.2 GB</span>
+          </div>
+          <div style="color:#3E5060">All app type is SF Pro Text via <span style="font-family:ui-monospace,monospace;font-size:12px">.system(size:)</span>; every number uses <span style="font-family:ui-monospace,monospace;font-size:12px">.monospacedDigit()</span> so columns don't jitter while scanning.</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C1000D">Risk badges</div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <span style="display:inline-block;padding:1.5px 7px;border-radius:9px;font-size:10.5px;font-weight:600;background:#E7F3EA;color:#1F6B3E;border:1px solid #C6E3CF">Safe</span>
+            <span style="display:inline-block;padding:1.5px 7px;border-radius:9px;font-size:10.5px;font-weight:600;background:#FBF0DE;color:#8A5200;border:1px solid #EEDCB8">Rebuild</span>
+            <span style="display:inline-block;padding:1.5px 7px;border-radius:9px;font-size:10.5px;font-weight:600;background:#FAE1E3;color:#9A000A;border:1px solid #F0C6C9">Careful</span>
+            <span style="display:inline-block;padding:1.5px 7px;border-radius:9px;font-size:10.5px;font-weight:600;background:#F0F0F0;color:#6E6E6E;border:1px solid #DFDFDF">Info</span>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 16px;color:#3E5060">
+            <span style="font-weight:700;color:#1C2835">Safe</span><span>regenerated automatically, no cost</span>
+            <span style="font-weight:700;color:#1C2835">Rebuild</span><span>re-download or recompile needed</span>
+            <span style="font-weight:700;color:#1C2835">Careful</span><span>user data or device state</span>
+            <span style="font-weight:700;color:#1C2835">Info</span><span>not deletable by DevSweep</span>
+          </div>
+          <div style="color:#3E5060">Capsule 10.5/600, 1.5×7 padding, tinted fill + hairline. Label always present — never color alone. Dark mode uses the same four hues at ~30 % luminance fills.</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C1000D">Color roles → SwiftUI</div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:5px 16px;font-size:13px">
+            <span style="font-family:ui-monospace,monospace;font-size:12px">.primary</span><span>row titles, totals</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">.secondary</span><span>subtitles, footer captions</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">.tertiary</span><span>info-only rows, sidebar sizes</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">Color(nsColor: .controlAccentColor)</span><span>checkboxes, selected sidebar row, bars of selected items, Clear</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">.red</span><span>destructive button + permanent-mode segment, failed rows</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">.orange</span><span>Rebuild badge, module error ⚠︎, FDA banner</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">.green</span><span>Safe badge, ✓ in progress list</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">Color(nsColor: .windowBackgroundColor)</span><span>detail background</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">Color(nsColor: .underPageBackgroundColor)</span><span>sidebar (behind material)</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">Color(nsColor: .separatorColor)</span><span>hairlines, row separators</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">Color(nsColor: .controlBackgroundColor)</span><span>module parent rows</span>
+          </div>
+          <div style="color:#3E5060">Nothing is hard-coded except the four badge hues, which are declared as <span style="font-family:ui-monospace,monospace;font-size:12px">Color("RiskSafe")</span> … asset-catalog colors with Light/Dark variants.</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C1000D">Screens → SwiftUI views</div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:5px 16px;font-size:13px">
+            <span style="font-family:ui-monospace,monospace;font-size:12px">DevSweepApp</span><span>@main, single WindowGroup + Settings scene</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">MainWindowView</span><span>NavigationSplitView(sidebar:detail:), min 900×600</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">ModuleJumpList</span><span>sidebar List — expands + reveals a module, no filtering</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">ModuleRow</span><span>Label + size, ProgressView on scan, ⚠︎ + .help()</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">ScanTreeView</span><span>banner + one OutlineGroup over all modules + FooterBar</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">ItemRow</span><span>DisclosureGroup content: TriStateToggle, RiskBadge, SizeCell</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">TriStateToggle</span><span>on / off / mixed, .disabled(blockedReason != nil)</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">RiskBadge</span><span>enum Risk: safe, rebuild, careful, info</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">AccessBannerView</span><span>dismissible, opens x-apple.systempreferences URL</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">FooterBarView</span><span>selection total, Clear, DeleteButton, freed all-time</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">DeleteConfirmSheet</span><span>.sheet, grouped by module, ackToggle gate</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">DeleteProgressSheet</span><span>per-item DeleteTaskRow, ProgressView(total:)</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">ToastOverlay</span><span>transient, 3 s, optional Empty Trash action</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">SettingsView</span><span>TabView: General, Modules, CustomLocations, Advanced</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">CustomLocationsTab</span><span>Table + folder importer + Open config file</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px">EmptyStateView / ScanningHeaderView</span><span>detail-pane states</span>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C1000D">Interaction rules</div>
+          <div style="display:flex;flex-direction:column;gap:8px;color:#3E5060">
+            <div>Checking a node applies to all its children; parents roll up to mixed. Blocked and info-only rows are skipped by “select all” and by parent propagation.</div>
+            <div>Right-click a row: Reveal in Finder · Select all safe · Copy path · Copy command. Info-only rows swap the first two for “Copy commands”.</div>
+            <div>Modules are the depth-0 rows of the tree, so a whole module can be selected with one checkbox. Right-click a module: Hide module · Rescan module · Collapse others.</div>
+            <div>Blocked rows keep the checkbox visible but disabled, with the reason in <span style="font-family:ui-monospace,monospace;font-size:12px">.help()</span>; the tree never hides what it can't delete.</div>
+            <div>Delete mode is remembered per launch; the destructive tint appears only on the footer button, the permanent segment, and the confirmation sheet.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+</x-dc>
+</body>
+</html>

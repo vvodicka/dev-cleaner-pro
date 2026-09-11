@@ -1,0 +1,281 @@
+{
+  "6E73F6D9-DA00-4ACB-8BD7-B219D2105444" : {
+    "build" : "23E254a",
+    "deletable" : true,
+    "identifier" : "6E73F6D9-DA00-4ACB-8BD7-B219D2105444",
+    "kind" : "Patchable Cryptex Disk Image",
+    "lastUsedAt" : "2026-09-04T10:07:04Z",
+    "mountPath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_23E254a",
+    "parentMountPath" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_iOSSimulatorRuntime\/c060853b459625d7878fd533de79c966fb98d31b.asset\/AssetData",
+    "path" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_iOSSimulatorRuntime\/c060853b459625d7878fd533de79c966fb98d31b.asset\/AssetData\/Restore\/094-99015-001.dmg",
+    "platformIdentifier" : "com.apple.platform.iphonesimulator",
+    "runtimeBundlePath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_23E254a\/Library\/Developer\/CoreSimulator\/Profiles\/Runtimes\/iOS 26.4.simruntime",
+    "runtimeIdentifier" : "com.apple.CoreSimulator.SimRuntime.iOS-26-4",
+    "signatureState" : "Verified",
+    "sizeBytes" : 8485014416,
+    "state" : "Ready",
+    "supportedArchitectures" : [
+      "arm64"
+    ],
+    "version" : "26.4.1"
+  },
+  "7B20ABB4-B3C0-4EDF-BCE8-05FA99A2F65E" : {
+    "build" : "23T570",
+    "deletable" : true,
+    "identifier" : "7B20ABB4-B3C0-4EDF-BCE8-05FA99A2F65E",
+    "kind" : "Patchable Cryptex Disk Image",
+    "lastUsedAt" : "2026-09-04T10:54:09Z",
+    "mountPath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/watchOS_23T570",
+    "parentMountPath" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_watchOSSimulatorRuntime\/c523dafdf621ee4b7146d710acd2235b03562449.asset\/AssetData",
+    "path" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_watchOSSimulatorRuntime\/c523dafdf621ee4b7146d710acd2235b03562449.asset\/AssetData\/Restore\/094-56758-089.dmg",
+    "platformIdentifier" : "com.apple.platform.watchsimulator",
+    "runtimeBundlePath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/watchOS_23T570\/Library\/Developer\/CoreSimulator\/Profiles\/Runtimes\/watchOS 26.5.simruntime",
+    "runtimeIdentifier" : "com.apple.CoreSimulator.SimRuntime.watchOS-26-5",
+    "signatureState" : "Verified",
+    "sizeBytes" : 3935033546,
+    "state" : "Ready",
+    "supportedArchitectures" : [
+      "arm64"
+    ],
+    "version" : "26.5"
+  },
+  "7FA3F157-3C3C-44BA-A3AE-6AC8ED33A144" : {
+    "build" : "22R349",
+    "deletable" : true,
+    "identifier" : "7FA3F157-3C3C-44BA-A3AE-6AC8ED33A144",
+    "kind" : "Cryptex Disk Image",
+    "mountPath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/watchOS_22R349",
+    "parentIdentifier" : "D5FDC7E0-38E3-4657-B195-49FFBB01784B",
+    "parentImagePath" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_watchOSSimulatorRuntime\/4e2c928bbf4df5d3dbf917e51e77efd2a163cf9e.asset\/AssetData\/096-67904-477.dmg",
+    "parentMountPath" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-D5FDC7E0-38E3-4657-B195-49FFBB01784B",
+    "path" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-D5FDC7E0-38E3-4657-B195-49FFBB01784B\/Restore\/096-67900-489.dmg",
+    "platformIdentifier" : "com.apple.platform.watchsimulator",
+    "runtimeBundlePath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/watchOS_22R349\/Library\/Developer\/CoreSimulator\/Profiles\/Runtimes\/watchOS 11.0.simruntime",
+    "runtimeIdentifier" : "com.apple.CoreSimulator.SimRuntime.watchOS-11-0",
+    "signatureState" : "Verified",
+    "sizeBytes" : 4469948381,
+    "state" : "Ready",
+    "supportedArchitectures" : [
+      "x86_64",
+      "arm64"
+    ],
+    "version" : "11.0"
+  },
+  "78CECB6A-ADE8-4A6C-865D-7D5EEE5C5CD6" : {
+    "build" : "22S99",
+    "deletable" : true,
+    "identifier" : "78CECB6A-ADE8-4A6C-865D-7D5EEE5C5CD6",
+    "kind" : "Cryptex Disk Image",
+    "mountPath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/watchOS_22S99",
+    "parentIdentifier" : "3F7B0563-AE91-42FB-8460-9712EF32B95E",
+    "parentImagePath" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_watchOSSimulatorRuntime\/61c55345c26390ff5e99aa829ead70ba84fd47d2.asset\/AssetData\/092-33104-108.dmg",
+    "parentMountPath" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-3F7B0563-AE91-42FB-8460-9712EF32B95E",
+    "path" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-3F7B0563-AE91-42FB-8460-9712EF32B95E\/Restore\/092-31969-118.dmg",
+    "platformIdentifier" : "com.apple.platform.watchsimulator",
+    "runtimeBundlePath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/watchOS_22S99\/Library\/Developer\/CoreSimulator\/Profiles\/Runtimes\/watchOS 11.2.simruntime",
+    "runtimeIdentifier" : "com.apple.CoreSimulator.SimRuntime.watchOS-11-2",
+    "signatureState" : "Verified",
+    "sizeBytes" : 4541193378,
+    "state" : "Ready",
+    "supportedArchitectures" : [
+      "x86_64",
+      "arm64"
+    ],
+    "version" : "11.2"
+  },
+  "704B1270-4C39-49E4-B1A1-A4DC8D9883B4" : {
+    "build" : "22C150",
+    "deletable" : true,
+    "identifier" : "704B1270-4C39-49E4-B1A1-A4DC8D9883B4",
+    "kind" : "Cryptex Disk Image",
+    "mountPath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_22C150",
+    "parentIdentifier" : "4D492F12-5500-470C-82C2-142569DF16E6",
+    "parentImagePath" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_iOSSimulatorRuntime\/3ee34d773407290b674484df946712d331558e17.asset\/AssetData\/092-10337-196.dmg",
+    "parentMountPath" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-4D492F12-5500-470C-82C2-142569DF16E6",
+    "path" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-4D492F12-5500-470C-82C2-142569DF16E6\/Restore\/092-09271-199.dmg",
+    "platformIdentifier" : "com.apple.platform.iphonesimulator",
+    "runtimeBundlePath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_22C150\/Library\/Developer\/CoreSimulator\/Profiles\/Runtimes\/iOS 18.2.simruntime",
+    "runtimeIdentifier" : "com.apple.CoreSimulator.SimRuntime.iOS-18-2",
+    "signatureState" : "Verified",
+    "sizeBytes" : 8706942096,
+    "state" : "Ready",
+    "supportedArchitectures" : [
+      "x86_64",
+      "arm64"
+    ],
+    "version" : "18.2"
+  },
+  "9537CAFC-0B82-42D7-AFAA-B3458B95B8B3" : {
+    "build" : "22E238",
+    "deletable" : true,
+    "identifier" : "9537CAFC-0B82-42D7-AFAA-B3458B95B8B3",
+    "kind" : "Cryptex Disk Image",
+    "mountPath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_22E238",
+    "parentIdentifier" : "6262B34C-A660-489F-A6AA-E7D906B9CB74",
+    "parentImagePath" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_iOSSimulatorRuntime\/6fb1e5fe25ee1c372f7116516e615c556906bd4e.asset\/AssetData\/090-44150-318.dmg",
+    "parentMountPath" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-6262B34C-A660-489F-A6AA-E7D906B9CB74",
+    "path" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-6262B34C-A660-489F-A6AA-E7D906B9CB74\/Restore\/090-44334-323.dmg",
+    "platformIdentifier" : "com.apple.platform.iphonesimulator",
+    "runtimeBundlePath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_22E238\/Library\/Developer\/CoreSimulator\/Profiles\/Runtimes\/iOS 18.4.simruntime",
+    "runtimeIdentifier" : "com.apple.CoreSimulator.SimRuntime.iOS-18-4",
+    "signatureState" : "Verified",
+    "sizeBytes" : 8825558354,
+    "state" : "Ready",
+    "supportedArchitectures" : [
+      "x86_64",
+      "arm64"
+    ],
+    "version" : "18.4"
+  },
+  "47306606-BB23-4B54-9CBE-C153FCB7BE87" : {
+    "build" : "22R581",
+    "deletable" : true,
+    "identifier" : "47306606-BB23-4B54-9CBE-C153FCB7BE87",
+    "kind" : "Cryptex Disk Image",
+    "mountPath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/watchOS_22R581",
+    "parentIdentifier" : "77023D45-5753-40AF-B37D-6E98FF3EDCD9",
+    "parentImagePath" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_watchOSSimulatorRuntime\/13c99bfcb0dfaf4f7b9d19b7cde146c65e9a9bb5.asset\/AssetData\/044-00559-095.dmg",
+    "parentMountPath" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-77023D45-5753-40AF-B37D-6E98FF3EDCD9",
+    "path" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-77023D45-5753-40AF-B37D-6E98FF3EDCD9\/Restore\/044-00635-096.dmg",
+    "platformIdentifier" : "com.apple.platform.watchsimulator",
+    "runtimeBundlePath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/watchOS_22R581\/Library\/Developer\/CoreSimulator\/Profiles\/Runtimes\/watchOS 11.1.simruntime",
+    "runtimeIdentifier" : "com.apple.CoreSimulator.SimRuntime.watchOS-11-1",
+    "signatureState" : "Verified",
+    "sizeBytes" : 4491183047,
+    "state" : "Ready",
+    "supportedArchitectures" : [
+      "x86_64",
+      "arm64"
+    ],
+    "version" : "11.1"
+  },
+  "70785470-DB63-44A0-902B-DDD0205D2DE7" : {
+    "build" : "23E244",
+    "deletable" : true,
+    "identifier" : "70785470-DB63-44A0-902B-DDD0205D2DE7",
+    "kind" : "Patchable Cryptex Disk Image",
+    "lastUsedAt" : "2026-04-27T11:53:33Z",
+    "mountPath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_23E244",
+    "parentIdentifier" : "D1DF2FEC-83A8-442C-A04D-5540A8AF5D0C",
+    "parentMountPath" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_iOSSimulatorRuntime\/7c5f8c6167dde76995389b472106f0fde204e050.asset\/AssetData",
+    "path" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_iOSSimulatorRuntime\/7c5f8c6167dde76995389b472106f0fde204e050.asset\/AssetData\/Restore\/043-15459-333.dmg",
+    "platformIdentifier" : "com.apple.platform.iphonesimulator",
+    "runtimeBundlePath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_23E244\/Library\/Developer\/CoreSimulator\/Profiles\/Runtimes\/iOS 26.4.simruntime",
+    "runtimeIdentifier" : "com.apple.CoreSimulator.SimRuntime.iOS-26-4",
+    "signatureState" : "Verified",
+    "sizeBytes" : 8485747282,
+    "state" : "Ready",
+    "supportedArchitectures" : [
+      "arm64"
+    ],
+    "version" : "26.4"
+  },
+  "D7E026B6-3F1D-42FF-9F96-1C807A26B980" : {
+    "build" : "22B81",
+    "deletable" : true,
+    "identifier" : "D7E026B6-3F1D-42FF-9F96-1C807A26B980",
+    "kind" : "Cryptex Disk Image",
+    "mountPath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_22B81",
+    "parentIdentifier" : "178FF30B-5073-456F-AB3A-9D862D77FEC8",
+    "parentImagePath" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_iOSSimulatorRuntime\/4d6f1d5e94817785365ca3e550933440a004fcc1.asset\/AssetData\/044-04621-122.dmg",
+    "parentMountPath" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-178FF30B-5073-456F-AB3A-9D862D77FEC8",
+    "path" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-178FF30B-5073-456F-AB3A-9D862D77FEC8\/Restore\/044-05093-123.dmg",
+    "platformIdentifier" : "com.apple.platform.iphonesimulator",
+    "runtimeBundlePath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_22B81\/Library\/Developer\/CoreSimulator\/Profiles\/Runtimes\/iOS 18.1.simruntime",
+    "runtimeIdentifier" : "com.apple.CoreSimulator.SimRuntime.iOS-18-1",
+    "signatureState" : "Verified",
+    "sizeBytes" : 8558900711,
+    "state" : "Ready",
+    "supportedArchitectures" : [
+      "x86_64",
+      "arm64"
+    ],
+    "version" : "18.1"
+  },
+  "E5D19DF2-1945-4E0E-978D-11C311F42087" : {
+    "build" : "22F77",
+    "deletable" : true,
+    "identifier" : "E5D19DF2-1945-4E0E-978D-11C311F42087",
+    "kind" : "Cryptex Disk Image",
+    "mountPath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_22F77",
+    "parentIdentifier" : "465EBECE-EDFD-4637-B3F8-9A1F4C0326E4",
+    "parentImagePath" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_iOSSimulatorRuntime\/c0d3fd05106683ba0b3680d4d1afec65f098d700.asset\/AssetData\/044-89849-100.dmg",
+    "parentMountPath" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-465EBECE-EDFD-4637-B3F8-9A1F4C0326E4",
+    "path" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-465EBECE-EDFD-4637-B3F8-9A1F4C0326E4\/Restore\/044-89417-100.dmg",
+    "platformIdentifier" : "com.apple.platform.iphonesimulator",
+    "runtimeBundlePath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_22F77\/Library\/Developer\/CoreSimulator\/Profiles\/Runtimes\/iOS 18.5.simruntime",
+    "runtimeIdentifier" : "com.apple.CoreSimulator.SimRuntime.iOS-18-5",
+    "signatureState" : "Verified",
+    "sizeBytes" : 8837333817,
+    "state" : "Ready",
+    "supportedArchitectures" : [
+      "x86_64",
+      "arm64"
+    ],
+    "version" : "18.5"
+  },
+  "F14A43AA-A55D-4668-9EAD-E3B0172587F6" : {
+    "build" : "22T250",
+    "deletable" : true,
+    "identifier" : "F14A43AA-A55D-4668-9EAD-E3B0172587F6",
+    "kind" : "Cryptex Disk Image",
+    "mountPath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/watchOS_22T250",
+    "parentIdentifier" : "9C1879D5-DFB7-4C5E-A584-03F00A59352E",
+    "parentImagePath" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_watchOSSimulatorRuntime\/8b2c87e772b668e700e6eaa460e04099b82fdaf3.asset\/AssetData\/090-42703-285.dmg",
+    "parentMountPath" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-9C1879D5-DFB7-4C5E-A584-03F00A59352E",
+    "path" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-9C1879D5-DFB7-4C5E-A584-03F00A59352E\/Restore\/090-42175-290.dmg",
+    "platformIdentifier" : "com.apple.platform.watchsimulator",
+    "runtimeBundlePath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/watchOS_22T250\/Library\/Developer\/CoreSimulator\/Profiles\/Runtimes\/watchOS 11.4.simruntime",
+    "runtimeIdentifier" : "com.apple.CoreSimulator.SimRuntime.watchOS-11-4",
+    "signatureState" : "Verified",
+    "sizeBytes" : 4661750286,
+    "state" : "Ready",
+    "supportedArchitectures" : [
+      "x86_64",
+      "arm64"
+    ],
+    "version" : "11.4"
+  },
+  "F30BB355-7B7D-40BE-954E-6F0610AC7004" : {
+    "build" : "22A3351",
+    "deletable" : true,
+    "identifier" : "F30BB355-7B7D-40BE-954E-6F0610AC7004",
+    "kind" : "Cryptex Disk Image",
+    "mountPath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_22A3351",
+    "parentIdentifier" : "EBC37194-8B91-4C20-82C3-6A4D9A6484E1",
+    "parentImagePath" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_iOSSimulatorRuntime\/cc1f035290d244fca4f74d9d243fcd02d2876c27.asset\/AssetData\/096-69246-684.dmg",
+    "parentMountPath" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-EBC37194-8B91-4C20-82C3-6A4D9A6484E1",
+    "path" : "\/Library\/Developer\/CoreSimulator\/Cryptex\/Images\/bundle\/SimRuntimeBundle-EBC37194-8B91-4C20-82C3-6A4D9A6484E1\/Restore\/096-69245-692.dmg",
+    "platformIdentifier" : "com.apple.platform.iphonesimulator",
+    "runtimeBundlePath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_22A3351\/Library\/Developer\/CoreSimulator\/Profiles\/Runtimes\/iOS 18.0.simruntime",
+    "runtimeIdentifier" : "com.apple.CoreSimulator.SimRuntime.iOS-18-0",
+    "signatureState" : "Verified",
+    "sizeBytes" : 8361951702,
+    "state" : "Ready",
+    "supportedArchitectures" : [
+      "x86_64",
+      "arm64"
+    ],
+    "version" : "18.0"
+  },
+  "F1815D57-B5EF-42ED-B7F6-417331508FED" : {
+    "build" : "23F77",
+    "deletable" : true,
+    "identifier" : "F1815D57-B5EF-42ED-B7F6-417331508FED",
+    "kind" : "Patchable Cryptex Disk Image",
+    "lastUsedAt" : "2026-09-10T07:45:39Z",
+    "mountPath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_23F77",
+    "parentMountPath" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_iOSSimulatorRuntime\/26c9174130fa5962f3e60f2a49963194dadbae4c.asset\/AssetData",
+    "path" : "\/System\/Library\/AssetsV2\/com_apple_MobileAsset_iOSSimulatorRuntime\/26c9174130fa5962f3e60f2a49963194dadbae4c.asset\/AssetData\/Restore\/094-56039-099.dmg",
+    "platformIdentifier" : "com.apple.platform.iphonesimulator",
+    "runtimeBundlePath" : "\/Library\/Developer\/CoreSimulator\/Volumes\/iOS_23F77\/Library\/Developer\/CoreSimulator\/Profiles\/Runtimes\/iOS 26.5.simruntime",
+    "runtimeIdentifier" : "com.apple.CoreSimulator.SimRuntime.iOS-26-5",
+    "signatureState" : "Verified",
+    "sizeBytes" : 8494282293,
+    "state" : "Ready",
+    "supportedArchitectures" : [
+      "arm64"
+    ],
+    "version" : "26.5"
+  }
+}

@@ -1,0 +1,33 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  core:
+    name: Core package
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - name: swift build
+        run: swift build --package-path Packages/DevCleanerProCore
+
+  app:
+    name: App
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      # Unsigned: the Developer ID certificate lives on the release machine, not in CI.
+      - name: xcodebuild
+        run: |
+          xcodebuild \
+            -project DevCleanerPro.xcodeproj \
+            -scheme DevCleanerPro \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build
