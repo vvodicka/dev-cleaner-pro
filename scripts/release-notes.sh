@@ -40,6 +40,7 @@ cat <<'EOF'
 
 ```sh
 brew tap vvodicka/tap
+brew trust vvodicka/tap
 brew install --cask devcleanerpro
 ```
 

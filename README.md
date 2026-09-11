@@ -24,8 +24,12 @@ images that nothing on the system refers to any more.
 
 ```sh
 brew tap vvodicka/tap
+brew trust vvodicka/tap
 brew install --cask devcleanerpro
 ```
+
+`brew trust` is not ceremony — Homebrew 6 refuses to load casks from a tap you have not
+explicitly trusted, and the install fails with "No Cask with this name exists" until you do.
 
 Or download the `.dmg` from [Releases](https://github.com/vvodicka/dev-cleaner-pro/releases/latest)
 and drag the app into `/Applications`. Builds are signed with a Developer ID certificate and

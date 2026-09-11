@@ -116,6 +116,10 @@ browser (so it carries the quarantine attribute), then open it.
 6. `brew update && brew upgrade --cask devcleanerpro` on a second machine, or at least
    `brew info --cask devcleanerpro`.
 
+Homebrew 6 will not load a cask from an untrusted tap. Anyone installing for the first time
+needs `brew trust vvodicka/tap` between the tap and the install, or it fails with the
+unhelpful "No Cask with this name exists". The README install block says so.
+
 ## Notes
 
 - Changing `PRODUCT_BUNDLE_IDENTIFIER` or the signing team revokes every user's Full Disk Access
