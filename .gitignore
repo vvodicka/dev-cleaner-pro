@@ -26,3 +26,6 @@ docs/design/_ds/
 
 # Original specification drop, superseded by docs/
 files/
+
+# Release artifacts
+dist/

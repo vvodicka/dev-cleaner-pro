@@ -57,7 +57,11 @@ die()  { printf '\033[31merror: %s\033[0m\n' "$1" >&2; exit 1; }
 # ---------------------------------------------------------------- preflight --
 step "Preflight"
 
-if ! security find-identity -v -p codesigning | grep -q "Developer ID Application"; then
+# Captured into a variable rather than piped: with `set -o pipefail`, `grep -q`
+# exits on the first match, the producer takes a SIGPIPE, and the pipeline reports
+# failure even though the match succeeded.
+IDENTITIES="$(security find-identity -v -p codesigning || true)"
+if ! grep -q "Developer ID Application" <<<"$IDENTITIES"; then
   note "no Developer ID Application certificate in the keychain yet —"
   note "the export below will ask Xcode to create one (-allowProvisioningUpdates)."
   note "If that fails, make it by hand: Xcode › Settings › Accounts › $TEAM_ID ›"
@@ -121,11 +125,13 @@ xcodebuild -exportArchive \
 # ------------------------------------------------------------------- verify --
 step "Verifying the signature"
 codesign --verify --deep --strict --verbose=2 "$APP"
-codesign -dvv "$APP" 2>&1 | grep -E "^Identifier|^Authority|^TeamIdentifier|flags="
 
-codesign -dvv "$APP" 2>&1 | grep -q "Developer ID Application" \
+SIGNATURE="$(codesign -dvv "$APP" 2>&1)"
+grep -E "^Identifier|^Authority|^TeamIdentifier|flags=" <<<"$SIGNATURE"
+
+grep -q "Developer ID Application" <<<"$SIGNATURE" \
   || die "the exported app is not signed with Developer ID — it would not open elsewhere"
-codesign -dvv "$APP" 2>&1 | grep -q "flags=.*runtime" \
+grep -q "flags=.*runtime" <<<"$SIGNATURE" \
   || die "hardened runtime is not enabled — notarization would be rejected"
 
 # ---------------------------------------------------------------------- dmg --
